@@ -21,8 +21,6 @@ print(tanya_dog.name, 'is', str(tanya_dog.age), 'years old')
 '''
 
 
-
-
 class Restaraunt:
 
     def __init__(self, restaraunt_name, cuisine_type):
@@ -61,8 +59,6 @@ italy_res.number_served = 100
 print(italy_res.number_served)
 italy_res.increment_number_served(20)
 print(italy_res.number_served)
-
-
 
 
 class User:
@@ -104,14 +100,20 @@ user1.reset_login_attempts()
 print(user1.login_attempts)
 
 
+class Privileges:
+
+    def __init__(self):
+        self.privilages = ['can add messages', 'can delete users', 'can ban!']
+
+    def show_privileges(self):
+        print('Admin can:', self.privilages)
+
+
 class Admin(User):
 
     def __init__(self, first_name, last_name, gender, age):
         super(Admin, self).__init__(first_name, last_name, gender, age)
-        self.privileges = ['can add messages', 'can delete users', 'can ban!']
-
-    def show_privileges(self):
-        print('Admin can:', self.privileges)
+        self.privilage = Privileges()
 
 
 class Car:
@@ -156,7 +158,7 @@ my_new_car.increment_odometer(-100)
 my_new_car.read_odometer()
 my_new_car.fill_gas_tank(70)
 administrator = Admin('Admin', 'adminishe', 'n/a', 'n/a')
-administrator.show_privileges()
+administrator.privilage.show_privileges()
 
 
 class Battery:
@@ -176,6 +178,10 @@ class Battery:
         message += 'miles on battery'
         print(message)
 
+    def upgrade_battery(self):
+        if self.battery_size == 70:
+            self.battery_size = 85
+
 
 class ElectricCar(Car):
 
@@ -186,8 +192,12 @@ class ElectricCar(Car):
     def fill_gas_tank(self, tank):
         self.tank = tank
         print('This car doesnt need a a gas tank!')
+
 my_tesla = ElectricCar('tesla', 'model S', 2016)
 print(my_tesla.get_descriptive_name())
 my_tesla.fill_gas_tank(100)
 my_tesla.battery.get_range()
 print(my_tesla.battery.battery_size)
+my_tesla.battery.get_range()
+my_tesla.battery.upgrade_battery()
+my_tesla.battery.get_range()
